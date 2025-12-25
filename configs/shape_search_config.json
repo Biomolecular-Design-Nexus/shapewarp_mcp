@@ -1,0 +1,26 @@
+{
+  "_description": "Configuration for SHAPE reactivity profile search",
+  "_source": "Extracted from examples/use_case_1_shape_search.py",
+
+  "search": {
+    "max_reactivity": 1.0,
+    "max_align_overlap": 0.5,
+    "threads": null,
+    "use_mock": true
+  },
+
+  "output": {
+    "format": "tsv",
+    "include_metadata": true
+  },
+
+  "mock_settings": {
+    "hits_per_query": 3,
+    "significant_pvalue_threshold": 1e-5
+  },
+
+  "validation": {
+    "validate_input": true,
+    "require_valid_sequences": true
+  }
+}

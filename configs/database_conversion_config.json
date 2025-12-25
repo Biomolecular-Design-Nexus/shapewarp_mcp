@@ -1,0 +1,28 @@
+{
+  "_description": "Configuration for database format conversion and analysis",
+  "_source": "Extracted from examples/use_case_2_database_conversion.py",
+
+  "conversion": {
+    "max_reactivity": 1.0,
+    "output_format": "binary",
+    "use_mock": true
+  },
+
+  "analysis": {
+    "analyze_only": false,
+    "generate_reports": true,
+    "include_global_stats": true,
+    "include_per_transcript_stats": true
+  },
+
+  "output": {
+    "save_transcript_csv": true,
+    "save_database_json": true,
+    "save_analysis_report": true
+  },
+
+  "validation": {
+    "validate_xml": true,
+    "require_reactivities": false
+  }
+}

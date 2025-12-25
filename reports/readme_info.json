@@ -1,0 +1,149 @@
+{
+  "project_name": "SHAPEwarp",
+  "description": "Search for structurally similar RNA sequences using SHAPE chemical probing reactivity profiles",
+  "tools": [
+    {
+      "name": "search_shape_profiles",
+      "type": "sync",
+      "description": "Search for similar RNA structures using SHAPE profiles",
+      "example_prompt": "Use search_shape_profiles with query_file @examples/data/query.txt and database_file @examples/data/test.db"
+    },
+    {
+      "name": "convert_database_format",
+      "type": "sync",
+      "description": "Convert between database formats and analyze",
+      "example_prompt": "Use convert_database_format to convert @examples/data/test_db.xml to results/converted.db"
+    },
+    {
+      "name": "analyze_reactivity_profiles",
+      "type": "sync",
+      "description": "Analyze SHAPE reactivity with statistics",
+      "example_prompt": "Run analyze_reactivity_profiles on @examples/data/query.txt with normalize True and window_size 15"
+    },
+    {
+      "name": "submit_shape_search",
+      "type": "submit",
+      "description": "Background SHAPE profile search",
+      "example_prompt": "Submit submit_shape_search with query_file @examples/data/query.txt and database_file @examples/data/test.db"
+    },
+    {
+      "name": "submit_database_conversion",
+      "type": "submit",
+      "description": "Background database conversion",
+      "example_prompt": "Submit submit_database_conversion with input_file @examples/data/test_db.xml"
+    },
+    {
+      "name": "submit_reactivity_analysis",
+      "type": "submit",
+      "description": "Background reactivity analysis",
+      "example_prompt": "Submit submit_reactivity_analysis with input_file @examples/data/query.txt"
+    },
+    {
+      "name": "submit_batch_shape_search",
+      "type": "submit",
+      "description": "Batch search multiple query files",
+      "example_prompt": "Process files in batch using submit_batch_shape_search with input_files [@examples/data/query.txt, @examples/data/query_align.txt] and database_file @examples/data/test.db"
+    },
+    {
+      "name": "get_job_status",
+      "type": "job_management",
+      "description": "Check job progress and timestamps",
+      "example_prompt": "Use get_job_status with job_id \"abc123\""
+    },
+    {
+      "name": "get_job_result",
+      "type": "job_management",
+      "description": "Get results when completed",
+      "example_prompt": "Use get_job_result with job_id \"abc123\""
+    },
+    {
+      "name": "get_job_log",
+      "type": "job_management",
+      "description": "View execution logs",
+      "example_prompt": "Use get_job_log with job_id \"abc123\" and tail 100"
+    },
+    {
+      "name": "cancel_job",
+      "type": "job_management",
+      "description": "Cancel running job",
+      "example_prompt": "Use cancel_job with job_id \"abc123\""
+    },
+    {
+      "name": "list_jobs",
+      "type": "job_management",
+      "description": "List all jobs with status filtering",
+      "example_prompt": "Use list_jobs or list_jobs with status \"running\""
+    }
+  ],
+  "scripts": [
+    {
+      "name": "shape_search.py",
+      "description": "Search for structurally similar RNA sequences using SHAPE profiles",
+      "example_command": "python scripts/shape_search.py --query examples/data/query.txt --database examples/data/test.db --output results/search_results"
+    },
+    {
+      "name": "database_conversion.py",
+      "description": "Convert between database formats and analyze contents",
+      "example_command": "python scripts/database_conversion.py --input examples/data/test_db.xml --output results/converted.db"
+    },
+    {
+      "name": "reactivity_analysis.py",
+      "description": "Analyze SHAPE reactivity with statistics and classification",
+      "example_command": "python scripts/reactivity_analysis.py --input examples/data/query.txt --output results/analysis --normalize --window-size 15"
+    }
+  ],
+  "demo_data": [
+    {
+      "file": "query.txt",
+      "description": "Main query sequence with SHAPE reactivity data",
+      "used_by": ["search_shape_profiles", "analyze_reactivity_profiles", "shape_search.py", "reactivity_analysis.py"]
+    },
+    {
+      "file": "query_align.txt",
+      "description": "Query sequence for alignment testing",
+      "used_by": ["search_shape_profiles", "shape_search.py"]
+    },
+    {
+      "file": "valid_query.txt",
+      "description": "Minimal valid query for validation",
+      "used_by": ["search_shape_profiles", "analyze_reactivity_profiles", "shape_search.py", "reactivity_analysis.py"]
+    },
+    {
+      "file": "test.db",
+      "description": "Binary format database with reference sequences",
+      "used_by": ["search_shape_profiles", "shape_search.py"]
+    },
+    {
+      "file": "test_db.xml",
+      "description": "XML format database with metadata",
+      "used_by": ["convert_database_format", "database_conversion.py"]
+    },
+    {
+      "file": "query_*.txt",
+      "description": "Various test cases (invalid formats, edge cases)",
+      "used_by": ["error testing"]
+    }
+  ],
+  "configs": [
+    {
+      "file": "default_config.json",
+      "description": "Shared default values",
+      "parameters": {"general_settings": true, "paths": true, "validation": true}
+    },
+    {
+      "file": "shape_search_config.json",
+      "description": "Search parameters",
+      "parameters": {"max_reactivity": 1.0, "max_align_overlap": 0.5, "use_mock": true}
+    },
+    {
+      "file": "database_conversion_config.json",
+      "description": "Conversion settings",
+      "parameters": {"output_format": "binary", "analysis_options": true}
+    },
+    {
+      "file": "reactivity_analysis_config.json",
+      "description": "Analysis parameters",
+      "parameters": {"normalize": false, "window_size": 10, "thresholds": true}
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "test_date": "2025-12-24T14:46:21.809825",
+  "tests": {
+    "server_import": {
+      "status": "passed",
+      "timestamp": "2025-12-24T14:46:22.690471"
+    },
+    "tool_execution": {
+      "status": "failed",
+      "timestamp": "2025-12-24T14:46:23.034700"
+    },
+    "job_submission": {
+      "status": "passed",
+      "timestamp": "2025-12-24T14:46:23.035903"
+    },
+    "error_handling": {
+      "status": "passed",
+      "timestamp": "2025-12-24T14:46:23.035945"
+    }
+  },
+  "summary": {
+    "total_tests": 4,
+    "passed": 3,
+    "failed": 1,
+    "pass_rate": "75.0%",
+    "ready_for_production": false
+  }
+}

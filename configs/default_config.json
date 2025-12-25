@@ -1,0 +1,36 @@
+{
+  "_description": "Default configuration values shared across all SHAPEwarp MCP scripts",
+  "_version": "1.0.0",
+
+  "general": {
+    "use_mock": true,
+    "verbose": false,
+    "validate_inputs": true
+  },
+
+  "paths": {
+    "models_dir": "models",
+    "data_dir": "examples/data",
+    "results_dir": "results",
+    "configs_dir": "configs"
+  },
+
+  "output": {
+    "default_format": "csv",
+    "include_metadata": true,
+    "overwrite_existing": false
+  },
+
+  "reactivity_processing": {
+    "max_reactivity_default": 10.0,
+    "handle_nan_values": true,
+    "default_normalization": false
+  },
+
+  "validation": {
+    "check_file_exists": true,
+    "validate_sequences": true,
+    "valid_nucleotides": ["A", "C", "G", "T", "U", "N"],
+    "min_sequence_length": 1
+  }
+}

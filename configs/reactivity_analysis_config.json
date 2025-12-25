@@ -1,0 +1,36 @@
+{
+  "_description": "Configuration for SHAPE reactivity profile analysis",
+  "_source": "Extracted from examples/use_case_3_reactivity_analysis.py",
+
+  "processing": {
+    "normalize": false,
+    "max_reactivity": 10.0,
+    "filter_outliers": false
+  },
+
+  "analysis": {
+    "window_size": 15,
+    "classification_thresholds": [0.3, 0.7],
+    "include_sliding_window": true,
+    "include_nucleotide_classification": true
+  },
+
+  "output": {
+    "format": "csv",
+    "save_summary_stats": true,
+    "save_nucleotide_data": true,
+    "save_window_analysis": true,
+    "generate_plots": false
+  },
+
+  "classification": {
+    "structured_threshold": 0.3,
+    "flexible_threshold": 0.7,
+    "labels": {
+      "structured": "structured",
+      "intermediate": "intermediate",
+      "flexible": "flexible",
+      "no_data": "no_data"
+    }
+  }
+}
